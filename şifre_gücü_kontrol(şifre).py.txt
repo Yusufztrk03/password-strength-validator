@@ -1,0 +1,36 @@
+şifre_gücü_kontrol(şifre).py
+
+def şifre_gücü_kontrol(şifre):
+    güç=0
+    if len(şifre) >= 8 and len(şifre) <=20:
+        güç+=1
+    if any(c.islower() for c in şifre):
+        güç+=1
+    if any(c.isupper() for c in şifre):
+        güç+=1
+    if any(c.isdigit() for c in şifre):
+        güç+=1
+    if any(c in string.punctuation for c in şifre):
+        güç+=1
+    return güç
+    
+print("Şifre oluşturma programına hoş geldiniz!")
+
+while True:
+    şifre = input("Bir şifre giriniz (8-20 karakter arası): ")
+    
+    güç = şifre_gücü_kontrol(şifre)
+    
+    if güç == 1:
+        print("Şifren zayıf. Büyük harf, sayı ve sembol eklemeyi dene.")
+    elif güç == 2:
+        print("Şifren biraz daha iyi ama hala zayıf.Büyük harf ve sayı eklemeyi dene")
+    elif güç == 3:
+        print("Şifren orta düzeyde. Sembol eklemeyi dene.")
+    elif güç == 4:
+        print("Şifren biraz daha güçlü ama hala güzel değil.Daha fazla çeşitlilik ekleyebilirsin.")
+    elif güç ==5:
+        print("Tebrikler! Şifren artık çok daha güçlü💪🔒")
+        break
+    else:
+        print("Şifre 8-20 karakter arasında olmalı!")
